@@ -1,0 +1,16 @@
+name: Temporary iOS SDK 27 check
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-ios-sdk:
+    runs-on: xcode-27
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verify iOS SDK
+        run: |
+          uname -m
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
